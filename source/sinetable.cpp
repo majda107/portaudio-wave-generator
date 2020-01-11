@@ -1,6 +1,7 @@
 #include "sinetable.h"
 #include "soundtable.h"
 #include "math.h"
+#include <QPolygonF>
 
 #define PI 3.14159
 
@@ -17,7 +18,9 @@ SineTable::~SineTable()
 
 void SineTable::Generate(double frequency)
 {
-    this->size = this->SampleRate() / frequency;
+    this->frequency = frequency;
+    this->size = this->SampleRate() / this->frequency;
+
     free(this->data);
     this->data = (float*)malloc(sizeof(float)*this->size);
     this->current = this->current % this->size;
@@ -38,4 +41,20 @@ void SineTable::Next()
 {
     this->current++;
     if(this->current >= this->size) this->current -= this->size;
+}
+
+QPolygonF* SineTable::plot(float width, float amp)
+{
+    QPolygonF *polygon = new QPolygonF();
+    double sine_waves = this->frequency / (double)100;
+
+
+    double val = 0;
+    for(int i = 0; i < width; i++)
+    {
+        val = sin((double)i / width * PI * 2 * sine_waves)*amp;
+        *polygon << QPointF(i, val + 400);
+    }
+
+    return polygon;
 }

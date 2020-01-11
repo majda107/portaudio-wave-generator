@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "sinetable.h"
 #include "soundtable.h"
+#include "sound/sawtable.h"
 #include "math.h"
 
 #include <QPainter>
@@ -29,11 +30,18 @@ MainWindow::~MainWindow()
 
 void MainWindow::Play()
 {
-    this->player->data = new SineTable();
-    ((SineTable*)this->player->data)->Generate(800);
+    this->player->data = new SawTable();
+    // this->player->data = new SineTable();
+    this->generate();
 
     this->player->Open();
     this->player->Play();
+}
+
+void MainWindow::generate()
+{
+    ((SawTable*)this->player->data)->Generate(this->slider->value(), 10);
+    // ((SineTable*)this->player->data)->Generate(this->slider->value());
 }
 
 void MainWindow::paintEvent(QPaintEvent *event)
@@ -46,23 +54,17 @@ void MainWindow::paintEvent(QPaintEvent *event)
 
     double y = 0;
 
-    QPolygonF polyline;
-    for(int i = 1; i <= width; i+=step)
-    {
-        double conv =(double) i / width * this->slider->value();
-
-        y = sin((double)conv/100 * 3.14 * 2)*40 + 300;
-        polyline << QPointF(i, y);
-    }
-
-    painter.drawPolyline(polyline);
+    auto polyline = this->player->data->plot(this->width(), 30);
+    painter.drawPolyline(*polyline);
+    delete polyline;
 }
 
 void MainWindow::handleSlider(int value)
 {
     qDebug("%s - %d\n", "Slider value has changed!", value);
-    ((SineTable*)this->player->data)->Generate(value);
+    // ((SineTable*)this->player->data)->Generate(value);
 
+    this->generate();
     this->update();
 }
 

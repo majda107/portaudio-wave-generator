@@ -13,9 +13,13 @@ public:
     float GetValue();
     void Next();
 
+    QPolygonF* plot(float width, float amp);
+
 private:
     float *data;
     unsigned long current;
+    float frequency;
+    float harmonics;
 };
 
 #endif // SAWTABLE_H

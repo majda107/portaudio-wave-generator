@@ -29,6 +29,8 @@ private:
     Player* player;
     QSlider *slider;
 
+    void generate();
+
 private slots:
     void handleSlider(int value);
 };

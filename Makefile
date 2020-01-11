@@ -19,9 +19,9 @@ SOURCE := source
 INCLUDE := include
 
 LIBS := -L/usr/lib/qt/QtWidgets -L/usr/lib/qt -lQt5Widgets -lQt5Test -lQt5Gui -lQt5Core
-INCLUDE_PATHS := -I/usr/include/qt/QtWidgets -I/usr/include/qt -I/usr/include/qt/QtGui -I$(INCLUDE) -I./ -I$(UI_PATH)/include
+INCLUDE_PATHS := -I/usr/include/qt/QtWidgets -I/usr/include/qt -I/usr/include/qt/QtGui -I$(INCLUDE) -I$(INCLUDE)/sound -I$(UI_PATH)/include
 
-SRC := $(wildcard $(SOURCE)/*.cpp) # FIND ALL FILES IN $(SOURCE) FOLDER THAT END WITH .cpp (example output: source/main.cpp source/car.cpp)
+SRC := $(wildcard $(SOURCE)/*.cpp) $(wildcard $(SOURCE)/sound/*.cpp)  # FIND ALL FILES IN $(SOURCE) FOLDER THAT END WITH .cpp (example output: source/main.cpp source/car.cpp)
 OBJ := $(patsubst $(SOURCE)%.cpp, $(BIN)%.o, $(SRC)) # REPLACE SOURCE PATH AND .cpp EXTENSION WITH BIN PATH .o EXTENSION (example output: bin/main.o bin/car.o)
 
 NAME := main # NAME OF OUTPUT FILE
@@ -59,6 +59,7 @@ moc_mainwindow.o: $(UI_PATH)/source/moc_mainwindow.cpp
 
 $(BIN)/%.o: $(SOURCE)/%.cpp
 	@mkdir -p $(BIN)
+	@mkdir -p $(BIN)/sound
 	$(CXX) $(CXXFLAGS) $(INCLUDE_PATHS) -c $< -o $@
 
 

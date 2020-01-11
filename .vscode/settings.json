@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "qapplication": "cpp"
+        "qapplication": "cpp",
+        "optional": "cpp",
+        "system_error": "cpp"
     }
 }

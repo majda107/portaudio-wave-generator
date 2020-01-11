@@ -2,6 +2,7 @@
 #define SINETABLE_H
 
 #include "soundtable.h"
+#include <QPolygonF>
 
 class SineTable: public SoundTable
 {
@@ -13,9 +14,12 @@ public:
 
     float GetValue();
     void Next();
+    
+    QPolygonF* plot(float width, float amp);
 
 private:
     unsigned long current;
+    float frequency;
     float *data;
 };
 

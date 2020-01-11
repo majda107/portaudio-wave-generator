@@ -1,6 +1,8 @@
 #ifndef SOUNDTABLE_H
 #define SOUNDTABLE_H
 
+#include <QPolygonF>
+
 class SoundTable
 {
 public:
@@ -15,6 +17,8 @@ public:
 
     virtual float GetValue();
     virtual void Next();
+
+    virtual QPolygonF* plot(float width, float amp); 
 
 protected:
     double sampleRate;
