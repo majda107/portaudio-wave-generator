@@ -1,5 +1,5 @@
 #include "sawtable.h"
-#include "../soundtable.h"
+#include "soundtable.h"
 
 #include <stdlib.h>
 #include <math.h>

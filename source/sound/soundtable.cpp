@@ -42,3 +42,8 @@ void SoundTable::Next()
 {
 
 }
+
+QPolygonF* SoundTable::plot(float width, float amp)
+{
+    return nullptr;
+}

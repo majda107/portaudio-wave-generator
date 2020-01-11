@@ -1,7 +1,7 @@
 #ifndef SAWTABLE_H
 #define SAWTABLE_H
 
-#include "../soundtable.h"
+#include "soundtable.h"
 
 class SawTable: public SoundTable
 {
