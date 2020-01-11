@@ -2,6 +2,7 @@
     "files.associations": {
         "qapplication": "cpp",
         "optional": "cpp",
-        "system_error": "cpp"
+        "system_error": "cpp",
+        "qpainter": "cpp"
     }
 }

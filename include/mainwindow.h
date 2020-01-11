@@ -7,6 +7,7 @@
 #include <QMainWindow>
 #include <QPainter>
 #include <QSlider>
+#include <QSpinBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -28,10 +29,11 @@ private:
 
     Player* player;
     QSlider *slider;
+    QSpinBox *frequencyBox;
 
     void generate();
 
 private slots:
-    void handleSlider(int value);
+    void handleFrequency(int value);
 };
 #endif // MAINWINDOW_H

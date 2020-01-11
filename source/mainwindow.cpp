@@ -17,7 +17,15 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     this->slider->setGeometry(10, 80, this->width()-20, 20);
     this->slider->show();
 
-    QObject::connect(slider, SIGNAL(valueChanged(int)), this, SLOT(handleSlider(int)));
+    this->frequencyBox = new QSpinBox(this);
+    this->frequencyBox->setMinimum(this->slider->minimum());
+    this->frequencyBox->setMaximum(this->slider->maximum());
+    this->frequencyBox->setValue(this->slider->value());
+    this->frequencyBox->setGeometry(10, 120, 200, 20);
+    this->frequencyBox->setSuffix("Hz");
+
+    QObject::connect(this->slider, SIGNAL(valueChanged(int)), this, SLOT(handleFrequency(int)));
+    QObject::connect(this->frequencyBox, SIGNAL(valueChanged(int)), this, SLOT(handleFrequency(int)));
 
     this->player = new Player();
 }
@@ -59,10 +67,18 @@ void MainWindow::paintEvent(QPaintEvent *event)
     delete polyline;
 }
 
-void MainWindow::handleSlider(int value)
+void MainWindow::handleFrequency(int value)
 {
-    qDebug("%s - %d\n", "Slider value has changed!", value);
-    // ((SineTable*)this->player->data)->Generate(value);
+    qDebug("%s - %d", "Slider value has changed!", value);
+
+    this->frequencyBox->blockSignals(true);
+    this->slider->blockSignals(true);
+
+    this->frequencyBox->setValue(value);
+    this->slider->setValue(value);
+
+    this->frequencyBox->blockSignals(false);
+    this->slider->blockSignals(false);
 
     this->generate();
     this->update();
