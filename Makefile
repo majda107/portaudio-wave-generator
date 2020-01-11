@@ -18,7 +18,7 @@ BIN := bin
 SOURCE := source
 INCLUDE := include
 
-LIBS := -L/usr/lib/qt/QtWidgets -L/usr/lib/qt -lglfw -lQt5Widgets -lQt5Test -lQt5Gui -lQt5Core
+LIBS := -L/usr/lib/qt/QtWidgets -L/usr/lib/qt -lQt5Widgets -lQt5Test -lQt5Gui -lQt5Core
 INCLUDE_PATHS := -I/usr/include/qt/QtWidgets -I/usr/include/qt -I/usr/include/qt/QtGui -I$(INCLUDE) -I./ -I$(UI_PATH)/include
 
 SRC := $(wildcard $(SOURCE)/*.cpp) # FIND ALL FILES IN $(SOURCE) FOLDER THAT END WITH .cpp (example output: source/main.cpp source/car.cpp)
