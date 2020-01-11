@@ -3,6 +3,11 @@
         "qapplication": "cpp",
         "optional": "cpp",
         "system_error": "cpp",
-        "qpainter": "cpp"
+        "qpainter": "cpp",
+        "qopenglfunctions": "cpp",
+        "qopenglshaderprogram": "cpp",
+        "qslider": "cpp",
+        "qopenglwidget": "cpp",
+        "qopenglfunctions_4_2_core": "cpp"
     }
 }

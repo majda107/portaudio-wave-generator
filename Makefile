@@ -1,22 +1,23 @@
 CXX := g++
 CXXFLAGS := -std=c++17 -Wall -Wextra -fPIE -fPIC -ggdb -g3 -lportaudio
 
+BIN := bin
+SOURCE := source
+INCLUDE := include
 
 # UI
 UIC := uic
 UI_FORMS := ui_mainwindow.h
 
 MOC := moc
-MOCS := moc_mainwindow.cpp
+MOCS := moc_mainwindow.cpp 
 MOCS_OBJS := moc_mainwindow.o
+
+BIN_MOCS_OBJS := $(patsubst %.o, $(BIN)/%.o, $(MOCS_OBJS))
 
 UI_PATH := ui
 # END UI
 
-
-BIN := bin
-SOURCE := source
-INCLUDE := include
 
 LIBS := -L/usr/lib/qt/QtWidgets -L/usr/lib/qt -lQt5Widgets -lQt5Test -lQt5Gui -lQt5Core
 INCLUDE_PATHS := -I/usr/include/qt/QtWidgets -I/usr/include/qt -I/usr/include/qt/QtGui -I$(INCLUDE) -I$(INCLUDE)/sound -I$(UI_PATH)/include
@@ -28,6 +29,7 @@ NAME := main # NAME OF OUTPUT FILE
 
 all: 
 	#$(warning $(OBJ)) 
+	$(warning $(BIN_MOCS_OBJS)) 
 	make ui
 	make main 
 
@@ -39,7 +41,7 @@ run:
 
 $(NAME): $(OBJ)
 	@mkdir -p $(BIN)
-	$(CXX) $(CXXFLAGS) $(OBJ) bin/$(MOCS_OBJS) -o $(BIN)/$@ $(INCLUDE_PATHS) $(LIBS) -ldl
+	$(CXX) $(CXXFLAGS) $(OBJ) $(BIN_MOCS_OBJS) -o $(BIN)/$@ $(INCLUDE_PATHS) $(LIBS) -ldl
 
 
 

@@ -4,11 +4,11 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/usr/include/qt",
                 "${workspaceFolder}/include",
                 "${workspaceFolder}/include/sound",
                 "/usr/include/qt/QtWidgets",
-                "/usr/include/qt/QtGui"
+                "/usr/include/qt/QtGui",
+                "/usr/include/qt"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang",
