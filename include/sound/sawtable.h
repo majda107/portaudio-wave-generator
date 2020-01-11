@@ -8,7 +8,7 @@ class SawTable: public SoundTable
 public:
     SawTable();
     ~SawTable();
-    void Generate(double frequency, int harmonics);
+    void generate(double frequency, int harmonics);
 
     float GetValue();
     void Next();

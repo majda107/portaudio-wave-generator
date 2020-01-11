@@ -14,7 +14,7 @@ SawTable::SawTable():SoundTable(44100, 128, 0)
     this->data = nullptr;
 }
 
-void SawTable::Generate(double frequency, int harmonics)
+void SawTable::generate(double frequency, int harmonics)
 {
     this->frequency = frequency;
     this->harmonics = harmonics;

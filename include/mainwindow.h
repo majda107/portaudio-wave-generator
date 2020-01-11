@@ -8,6 +8,9 @@
 #include <QPainter>
 #include <QSlider>
 #include <QSpinBox>
+#include <QGroupBox>
+#include <QVBoxLayout>
+#include <QRadioButton>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -31,9 +34,13 @@ private:
     QSlider *slider;
     QSpinBox *frequencyBox;
 
-    void generate();
+    QGroupBox *radioBox;
+
+    QRadioButton *sineButton;
+    QRadioButton *sawButton;
 
 private slots:
     void handleFrequency(int value);
+    void handleShapeChange();
 };
 #endif // MAINWINDOW_H

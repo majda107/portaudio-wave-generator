@@ -10,7 +10,7 @@ public:
     SineTable();
     ~SineTable();
 
-    void Generate(double frequency);
+    void generate(double frequency, int harmonics = 0);
 
     float GetValue();
     void Next();

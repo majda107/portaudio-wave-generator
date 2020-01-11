@@ -19,6 +19,7 @@ public:
     virtual void Next();
 
     virtual QPolygonF* plot(float width, float amp); 
+    virtual void generate(double frequency, int harmonics);
 
 protected:
     double sampleRate;

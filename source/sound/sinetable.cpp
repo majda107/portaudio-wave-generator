@@ -16,7 +16,7 @@ SineTable::~SineTable()
     free(this->data);
 }
 
-void SineTable::Generate(double frequency)
+void SineTable::generate(double frequency, int harmonics)
 {
     this->frequency = frequency;
     this->size = this->SampleRate() / this->frequency;

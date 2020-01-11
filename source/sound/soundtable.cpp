@@ -47,3 +47,8 @@ QPolygonF* SoundTable::plot(float width, float amp)
 {
     return nullptr;
 }
+
+void SoundTable::generate(double frequency, int harmonics)
+{
+
+}
