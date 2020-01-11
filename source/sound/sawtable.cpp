@@ -10,6 +10,8 @@ SawTable::SawTable():SoundTable(44100, 128, 0)
     this->current = 0;
     this->frequency = 0;
     this->harmonics = 0;
+
+    this->data = nullptr;
 }
 
 void SawTable::Generate(double frequency, int harmonics)
@@ -19,8 +21,8 @@ void SawTable::Generate(double frequency, int harmonics)
 
     this->size = this->SampleRate() / frequency;
 
-    // if(this->data != nullptr)
-    //     free(this->data);
+    if(this->data != nullptr)
+        free(this->data);
     this->data = (float*)malloc(sizeof(float) * this->size);
 
     double sign = 0;
