@@ -18,7 +18,7 @@ public:
     virtual float GetValue();
     virtual void Next();
 
-    virtual QPolygonF* plot(float width, float amp); 
+    virtual QPolygonF* plot(float width, float amp, float elapsed); 
     virtual void generate(double frequency, int harmonics);
 
 protected:

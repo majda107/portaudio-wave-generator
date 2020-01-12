@@ -11,6 +11,7 @@
 #include <QGroupBox>
 #include <QVBoxLayout>
 #include <QRadioButton>
+#include <QTimer>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -38,6 +39,9 @@ private:
 
     QRadioButton *sineButton;
     QRadioButton *sawButton;
+
+    QTimer *timer;
+    float elapsed;
 
 private slots:
     void handleFrequency(int value);

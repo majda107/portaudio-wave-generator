@@ -41,6 +41,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     QObject::connect(this->sawButton, SIGNAL(clicked(bool)), this, SLOT(handleShapeChange()));
     QObject::connect(this->sineButton, SIGNAL(clicked(bool)), this, SLOT(handleShapeChange()));
 
+    this->timer = new QTimer();
+    this->timer->setInterval(10);
+    QObject::connect(this->timer, SIGNAL(timeout()), this, SLOT(update()));
+
+    this->elapsed = 0;
+
     this->player = new Player();
 }
 
@@ -58,6 +64,7 @@ void MainWindow::Play()
     this->player->Play();
 
     this->slider->setValue(600);
+    this->timer->start();
 }
 
 void MainWindow::paintEvent(QPaintEvent *event)
@@ -70,9 +77,11 @@ void MainWindow::paintEvent(QPaintEvent *event)
 
     double y = 0;
 
-    auto polyline = this->player->data->plot(this->width(), 30);
+    auto polyline = this->player->data->plot(this->width(), 30, elapsed);
     painter.drawPolyline(*polyline);
     delete polyline;
+
+    this->elapsed += 0.1f;
 }
 
 void MainWindow::handleFrequency(int value)

@@ -54,7 +54,7 @@ void SawTable::Next()
     if(this->current >= this->size) this->current -= this->size;
 }
 
-QPolygonF* SawTable::plot(float width, float amp)
+QPolygonF* SawTable::plot(float width, float amp, float elapsed)
 {
     QPolygonF *polyline = new QPolygonF();
     double wave_count = this->frequency /100;
@@ -70,13 +70,13 @@ QPolygonF* SawTable::plot(float width, float amp)
         
         for(int h = 1; h <= this->harmonics; h++)
         {
-            val = sin(h * ((double)x / (double)width * 3.14 * 2 * wave_count));
+            val = sin(h * ((double)x / (double)width * 3.14 * 2 * wave_count + elapsed));
             y += sign * ((double)1/(double)h) * val;
             sign *= -1;
         }
 
         // val = sin((double)x/(double)width * 3.14 * 2);
-        *polyline << QPointF(x, y*amp + 300);
+        *polyline << QPointF(x, y*amp + 340);
     }
 
     return polyline;

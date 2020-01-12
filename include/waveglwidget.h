@@ -22,6 +22,8 @@ private:
     QMatrix4x4 *m_projection;
     QOpenGLVertexArrayObject *model;
     QOpenGLShaderProgram *program;
+    int elapsed_location;
+    float elapsed;
 };
 
 #endif

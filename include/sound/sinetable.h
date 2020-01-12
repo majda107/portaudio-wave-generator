@@ -15,7 +15,7 @@ public:
     float GetValue();
     void Next();
     
-    QPolygonF* plot(float width, float amp);
+    QPolygonF* plot(float width, float amp, float elapsed);
 
 private:
     unsigned long current;

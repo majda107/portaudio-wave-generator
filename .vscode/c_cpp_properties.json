@@ -8,6 +8,7 @@
                 "${workspaceFolder}/include/sound",
                 "/usr/include/qt/QtWidgets",
                 "/usr/include/qt/QtGui",
+                "/usr/include/qt/QtCore",
                 "/usr/include/qt"
             ],
             "defines": [],

@@ -43,7 +43,7 @@ void SineTable::Next()
     if(this->current >= this->size) this->current -= this->size;
 }
 
-QPolygonF* SineTable::plot(float width, float amp)
+QPolygonF* SineTable::plot(float width, float amp, float elapsed)
 {
     QPolygonF *polygon = new QPolygonF();
     double sine_waves = this->frequency / (double)100;
@@ -52,8 +52,8 @@ QPolygonF* SineTable::plot(float width, float amp)
     double val = 0;
     for(int i = 0; i < width; i++)
     {
-        val = sin((double)i / width * PI * 2 * sine_waves)*amp;
-        *polygon << QPointF(i, val + 400);
+        val = sin((double)i / width * PI * 2 * sine_waves + elapsed)*amp;
+        *polygon << QPointF(i, val + 340);
     }
 
     return polygon;
