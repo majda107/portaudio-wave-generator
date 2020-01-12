@@ -41,9 +41,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     QObject::connect(this->sawButton, SIGNAL(clicked(bool)), this, SLOT(handleShapeChange()));
     QObject::connect(this->sineButton, SIGNAL(clicked(bool)), this, SLOT(handleShapeChange()));
 
+    this->canvas = new Canvas(this);
+    this->canvas->setGeometry(10, 200, this->width() - 20, 300);
+
     this->timer = new QTimer();
     this->timer->setInterval(10);
-    QObject::connect(this->timer, SIGNAL(timeout()), this, SLOT(update()));
+    QObject::connect(this->timer, SIGNAL(timeout()), this, SLOT(call_update()));
 
     this->elapsed = 0;
 
@@ -67,19 +70,11 @@ void MainWindow::Play()
     this->timer->start();
 }
 
-void MainWindow::paintEvent(QPaintEvent *event)
+void MainWindow::call_update()
 {
-    QPainter painter(this);
-    painter.setRenderHint(QPainter::RenderHint::HighQualityAntialiasing);
 
-    double width = this->width();
-    int step = 1;
-
-    double y = 0;
-
-    auto polyline = this->player->data->plot(this->width(), 30, elapsed);
-    painter.drawPolyline(*polyline);
-    delete polyline;
+    this->canvas->setPolyline(this->player->data->plot(this->canvas->width(), this->canvas->height()/3, elapsed));
+    this->canvas->update();
 
     this->elapsed += 0.1f;
 }

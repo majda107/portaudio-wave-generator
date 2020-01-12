@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include "soundtable.h"
+#include "canvas.h"
 #include "player.h"
 
 #include <QMainWindow>
@@ -26,12 +27,13 @@ public:
     void Play();
     ~MainWindow();
 
-    virtual void paintEvent(QPaintEvent *event);
+public slots:
+    void call_update();
 
 private:
     Ui::MainWindow *ui;
 
-    Player* player;
+    Player *player;
     QSlider *slider;
     QSpinBox *frequencyBox;
 
@@ -39,6 +41,8 @@ private:
 
     QRadioButton *sineButton;
     QRadioButton *sawButton;
+
+    Canvas *canvas;
 
     QTimer *timer;
     float elapsed;

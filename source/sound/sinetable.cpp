@@ -53,7 +53,7 @@ QPolygonF* SineTable::plot(float width, float amp, float elapsed)
     for(int i = 0; i < width; i++)
     {
         val = sin((double)i / width * PI * 2 * sine_waves + elapsed)*amp;
-        *polygon << QPointF(i, val + 340);
+        *polygon << QPointF(i, val + amp);
     }
 
     return polygon;

@@ -8,6 +8,8 @@
         "qopenglshaderprogram": "cpp",
         "qslider": "cpp",
         "qopenglwidget": "cpp",
-        "qopenglfunctions_4_2_core": "cpp"
+        "qopenglfunctions_4_2_core": "cpp",
+        "qpaintevent": "cpp",
+        "random": "cpp"
     }
 }

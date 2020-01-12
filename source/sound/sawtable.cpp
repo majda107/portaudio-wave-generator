@@ -76,7 +76,7 @@ QPolygonF* SawTable::plot(float width, float amp, float elapsed)
         }
 
         // val = sin((double)x/(double)width * 3.14 * 2);
-        *polyline << QPointF(x, y*amp + 340);
+        *polyline << QPointF(x, y*amp/2 + amp);
     }
 
     return polyline;
